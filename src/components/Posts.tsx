@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Table, Pagination } from "antd";
 import type { ColumnsType } from "antd/lib/table";
 import axios from "axios";
+import { useFetchData } from "../hooks/useFetchData";
 
 interface Post {
   id: number;
@@ -32,27 +33,15 @@ const columns: ColumnsType<Post> = [
     key: "body",
   },
 ];
-
+//custom hook
 export const Posts = () => {
-  const [data, setData] = useState<Post[]>([]);
-  const [page, setPage] = useState(1);
-  const [total, setTotal] = useState(0);
-  const [pageSize, setPageSize] = useState(10);
-  const [loading, setLoading] = useState(false);
+  //refactoring
+  // بهینه کردن ساختار کد بدون تغییر در رفتار کرد
 
-  useEffect(() => {
-    // async / await
-    // iife
-    (async () => {
-      setLoading(true);
-      const resp = await axios.get<Post[]>(
-        `https://jsonplaceholder.typicode.com/posts?_limit=${pageSize}&_page=${page}`
-      );
-      setData(resp.data);
-      setTotal(+resp.headers["x-total-count"]);
-      setLoading(false);
-    })();
-  }, [page, pageSize]);
+  const [first, setFirst] = useState(0);
+
+  const { loading, data, page, setPage, setPageSize, total } =
+    useFetchData<Post>("posts");
 
   return (
     <>
