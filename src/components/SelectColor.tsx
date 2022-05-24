@@ -2,13 +2,13 @@ import { useRef, useContext } from "react";
 import { AppContext } from "../App";
 
 export function SelectColor() {
-  const appContext = useContext(AppContext);
+  const [context, setContext] = useContext(AppContext);
 
   // const [color, setColor] = useState("red");
   const selectRef = useRef<HTMLSelectElement>(null);
   const setSelectColor = (val: string) => {
     if (selectRef && selectRef.current) {
-      appContext.color = val;
+      setContext({ color: val, lang: context.lang });
       selectRef.current.style.color = val;
     }
   };

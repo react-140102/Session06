@@ -8,7 +8,7 @@ interface TaskItemProps {
 }
 
 const TaskItemFunc = function ({ task, toggleTask }: TaskItemProps) {
-  const appContext = useContext(AppContext);
+  const [context] = useContext(AppContext);
   return (
     <li>
       <input
@@ -16,7 +16,7 @@ const TaskItemFunc = function ({ task, toggleTask }: TaskItemProps) {
         type="checkbox"
         checked={task.done}
       />
-      <span style={{ color: appContext.color }}>{task.title}</span>
+      <span style={{ color: context.color }}>{task.title}</span>
     </li>
   );
 };
