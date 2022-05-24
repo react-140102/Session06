@@ -1,4 +1,5 @@
-import { memo } from "react";
+import { memo, useContext } from "react";
+import { AppContext } from "../../App";
 import { Task } from "./Task";
 
 interface TaskItemProps {
@@ -7,6 +8,7 @@ interface TaskItemProps {
 }
 
 const TaskItemFunc = function ({ task, toggleTask }: TaskItemProps) {
+  const appContext = useContext(AppContext);
   return (
     <li>
       <input
@@ -14,7 +16,7 @@ const TaskItemFunc = function ({ task, toggleTask }: TaskItemProps) {
         type="checkbox"
         checked={task.done}
       />
-      <span>{task.title}</span>
+      <span style={{ color: appContext.color }}>{task.title}</span>
     </li>
   );
 };
