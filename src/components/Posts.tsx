@@ -38,22 +38,30 @@ export const Posts = () => {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [pageSize, setPageSize] = useState(10);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     // async / await
     // iife
     (async () => {
+      setLoading(true);
       const resp = await axios.get<Post[]>(
         `https://jsonplaceholder.typicode.com/posts?_limit=${pageSize}&_page=${page}`
       );
       setData(resp.data);
       setTotal(+resp.headers["x-total-count"]);
+      setLoading(false);
     })();
   }, [page, pageSize]);
 
   return (
     <>
-      <Table columns={columns} dataSource={data} pagination={false} />
+      <Table
+        loading={loading}
+        columns={columns}
+        dataSource={data}
+        pagination={false}
+      />
       <Pagination
         defaultCurrent={page}
         onChange={(page, pageSize) => {
