@@ -49,7 +49,7 @@ export const Posts = () => {
       setData(resp.data);
       setTotal(+resp.headers["x-total-count"]);
     })();
-  }, [page]);
+  }, [page, pageSize]);
 
   return (
     <>
@@ -58,7 +58,7 @@ export const Posts = () => {
         defaultCurrent={page}
         onChange={(page, pageSize) => {
           setPage(page);
-          setPage(pageSize);
+          setPageSize(pageSize);
         }}
         total={total}
       ></Pagination>
