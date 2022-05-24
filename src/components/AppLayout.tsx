@@ -5,6 +5,7 @@ import { Todos } from "./Todos";
 import TaskList from "./Task/TaskList";
 import { SelectColor } from "./SelectColor";
 import { Link, Route, Routes } from "react-router-dom";
+import { Photos } from "./Photos";
 
 const { Header, Content, Footer } = Layout;
 
@@ -25,6 +26,9 @@ export const AppLayout = () => (
         <Menu.Item>
           <Link to="/todos">Todos</Link>
         </Menu.Item>
+        <Menu.Item>
+          <Link to="/photos">Photos</Link>
+        </Menu.Item>
       </Menu>
     </Header>
     <Content style={{ padding: "0 50px" }}>
@@ -43,6 +47,7 @@ export const AppLayout = () => (
           <Route path="tasks" element={<TaskList />} />
           <Route path="comments" element={<Comments />} />
           <Route path="todos" element={<Todos />} />
+          <Route path="photos" element={<Photos />} />
         </Routes>
       </div>
     </Content>
