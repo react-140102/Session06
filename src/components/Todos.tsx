@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Table, Pagination } from "antd";
+import { Table, Pagination, Checkbox } from "antd";
 import type { ColumnsType } from "antd/lib/table";
 import axios from "axios";
 import { useFetchData } from "../hooks/useFetchData";
@@ -31,15 +31,11 @@ const columns: ColumnsType<Todo> = [
   },
   {
     ...genColumn("completed"),
+    render: (completed: boolean) => <Checkbox disabled checked={completed} />,
   },
 ];
-//custom hook
+
 export const Todos = () => {
-  //refactoring
-  // بهینه کردن ساختار کد بدون تغییر در رفتار کرد
-
-  const [first, setFirst] = useState(0);
-
   const { loading, data, page, setPage, setPageSize, total } =
     useFetchData<Todo>("todos");
 
