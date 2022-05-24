@@ -1,12 +1,10 @@
 import "./App.css";
-import { Comments } from "./components/Comments";
-import { Posts } from "./components/Posts";
+import { AppLayout } from "./components/AppLayout";
 
 function App() {
   return (
     <>
-      {/* <Posts></Posts> */}
-      <Comments></Comments>
+      <AppLayout></AppLayout>
     </>
   );
 }
