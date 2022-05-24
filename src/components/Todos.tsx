@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import { Table, Pagination, Checkbox } from "antd";
 import type { ColumnsType } from "antd/lib/table";
-import axios from "axios";
 import { useFetchData } from "../hooks/useFetchData";
 
 interface Todo {
@@ -31,7 +29,9 @@ const columns: ColumnsType<Todo> = [
   },
   {
     ...genColumn("completed"),
-    render: (completed: boolean) => <Checkbox disabled checked={completed} />,
+    render: (completed: boolean) => (
+      <Checkbox disabled defaultChecked={completed} />
+    ),
   },
 ];
 

@@ -1,18 +1,19 @@
-import { Layout, Menu, Breadcrumb, Divider } from "antd";
+import { Layout, Menu, Divider } from "antd";
 import { Comments } from "./Comments";
 import { Posts } from "./Posts";
 import { Todos } from "./Todos";
 import TaskList from "./Task/TaskList";
+import { SelectColor } from "./SelectColor";
 
 const { Header, Content, Footer } = Layout;
 
 const menuItems = [
   {
-    key: 1,
+    key: "1",
     label: "Posts",
   },
   {
-    key: 2,
+    key: "2",
     label: "Comments",
   },
 ];
@@ -30,6 +31,9 @@ export const AppLayout = () => (
     </Header>
     <Content style={{ padding: "0 50px" }}>
       <div className="site-layout-content">
+        <Divider></Divider>
+        <SelectColor></SelectColor>
+        <Divider></Divider>
         <TaskList></TaskList>
         <Divider />
         <Todos></Todos>

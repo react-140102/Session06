@@ -17,7 +17,7 @@ if (a === b) {
   //
 }
 
-export default function () {
+export default function TodoList() {
   const [title, setTitle] = useState("");
   const [tasks, setTasks] = useState<Task[]>([
     { id: 1, title: "React hooks", done: true },

@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
 import { Table, Pagination } from "antd";
 import type { ColumnsType } from "antd/lib/table";
-import axios from "axios";
 import { useFetchData } from "../hooks/useFetchData";
 
-interface Comments {
+interface Comment {
   id: number;
   postId: number;
   name: string;
@@ -19,7 +17,7 @@ function genColumn(name: string) {
     key: name,
   };
 }
-const columns: ColumnsType<Comments> = [
+const columns: ColumnsType<Comment> = [
   {
     ...genColumn("id"),
     title: "شناسه",
@@ -36,7 +34,7 @@ const columns: ColumnsType<Comments> = [
 ];
 export const Comments = () => {
   const { loading, data, page, setPage, setPageSize, total } =
-    useFetchData<Comments>("comments");
+    useFetchData<Comment>("comments");
 
   return (
     <>

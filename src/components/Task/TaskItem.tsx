@@ -14,7 +14,7 @@ const TaskItemFunc = function ({ task, toggleTask }: TaskItemProps) {
         type="checkbox"
         checked={task.done}
       />
-      <a>{task.title}</a>
+      <span>{task.title}</span>
     </li>
   );
 };

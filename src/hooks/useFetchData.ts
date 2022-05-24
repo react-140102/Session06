@@ -19,7 +19,7 @@ export const useFetchData = <T>(endpoint: string) => {
       setTotal(+resp.headers["x-total-count"]);
       setLoading(false);
     })();
-  }, [page, pageSize]);
+  }, [page, pageSize, endpoint]);
 
   return {loading, data, page, setPage, setPageSize, total};
 }

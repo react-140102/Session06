@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import { Table, Pagination } from "antd";
 import type { ColumnsType } from "antd/lib/table";
-import axios from "axios";
 import { useFetchData } from "../hooks/useFetchData";
 
 interface Post {
@@ -38,8 +36,6 @@ const columns: ColumnsType<Post> = [
 export const Posts = () => {
   //refactoring
   // بهینه کردن ساختار کد بدون تغییر در رفتار کرد
-
-  const [first, setFirst] = useState(0);
 
   const { loading, data, page, setPage, setPageSize, total } =
     useFetchData<Post>("posts");
