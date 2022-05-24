@@ -1,6 +1,7 @@
 import { Layout, Menu, Breadcrumb, Divider } from "antd";
 import { Comments } from "./Comments";
 import { Posts } from "./Posts";
+import { Todos } from "./Todos";
 import TaskList from "./Task/TaskList";
 
 const { Header, Content, Footer } = Layout;
@@ -30,6 +31,8 @@ export const AppLayout = () => (
     <Content style={{ padding: "0 50px" }}>
       <div className="site-layout-content">
         <TaskList></TaskList>
+        <Divider />
+        <Todos></Todos>
         <Divider />
         <Posts></Posts>
         <Divider />
