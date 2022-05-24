@@ -11,26 +11,27 @@ interface Post {
   body: string;
 }
 
+function genColumn(name: string) {
+  return {
+    title: name,
+    dataIndex: name,
+    key: name,
+  };
+}
 const columns: ColumnsType<Post> = [
   {
-    title: "Id",
-    dataIndex: "id",
-    key: "id",
+    ...genColumn("id"),
+    title: "شناسه",
   },
   {
+    ...genColumn("userId"),
     title: "User Id",
-    dataIndex: "userId",
-    key: "userId",
   },
   {
-    title: "Title",
-    dataIndex: "title",
-    key: "title",
+    ...genColumn("title"),
   },
   {
-    title: "Body",
-    dataIndex: "body",
-    key: "body",
+    ...genColumn("body"),
   },
 ];
 //custom hook
