@@ -43,6 +43,7 @@ export const Comments = () => {
         columns={columns}
         dataSource={data}
         pagination={false}
+        rowKey="id"
       />
       <Pagination
         defaultCurrent={page}
