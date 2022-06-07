@@ -1,8 +1,11 @@
-import { Table, Pagination } from "antd";
+import { Table, Pagination, Button, Badge } from "antd";
 import type { ColumnsType } from "antd/lib/table";
 import { Helmet } from "react-helmet-async";
+import { useDispatch, useSelector } from "react-redux";
 import { useFetchData } from "../hooks/useFetchData";
 import { Header } from "./Header";
+import { reset, incrementByAmount } from "./Counter/couter.slice";
+import { RootState } from "../store";
 
 interface Post {
   id: number;
@@ -36,6 +39,9 @@ const columns: ColumnsType<Post> = [
 ];
 //custom hook
 export const Posts = () => {
+  const dispatch = useDispatch();
+  const count = useSelector((state: RootState) => state.shomarande.value);
+
   //refactoring
   // بهینه کردن ساختار کد بدون تغییر در رفتار کرد
 
@@ -45,6 +51,11 @@ export const Posts = () => {
   return (
     <>
       <Header title="پست"></Header>
+
+      <Button onClick={() => dispatch(incrementByAmount(10))}>Add 10</Button>
+      <Badge count={count}>
+        <Button onClick={() => dispatch(reset())}>Rest</Button>
+      </Badge>
       <Table
         loading={loading}
         columns={columns}
