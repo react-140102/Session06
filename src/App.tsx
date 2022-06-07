@@ -3,6 +3,8 @@ import { AppLayout } from "./components/AppLayout";
 import { createContext, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { store } from "./store";
+import { Provider } from "react-redux";
 
 interface AppContextType {
   color: string;
@@ -19,13 +21,15 @@ function App() {
   });
   return (
     <>
-      <HelmetProvider>
-        <BrowserRouter>
-          <AppContext.Provider value={[context, setContext]}>
-            <AppLayout></AppLayout>
-          </AppContext.Provider>
-        </BrowserRouter>
-      </HelmetProvider>
+      <Provider store={store}>
+        <HelmetProvider>
+          <BrowserRouter>
+            <AppContext.Provider value={[context, setContext]}>
+              <AppLayout></AppLayout>
+            </AppContext.Provider>
+          </BrowserRouter>
+        </HelmetProvider>
+      </Provider>
     </>
   );
 }
