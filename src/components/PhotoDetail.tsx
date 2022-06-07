@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { api } from "../utils/api";
 import { Photo } from "./Photo";
-import { Card } from "antd";
+import { Card, Button } from "antd";
 const { Meta } = Card;
 
 export const PhotoDetail = () => {
   const params = useParams();
   const [photo, setPhoto] = useState<Photo>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -31,6 +32,7 @@ export const PhotoDetail = () => {
       >
         <Meta title={photo?.title} description="www.instagram.com" />
       </Card>
+      <Button onClick={() => navigate(-1)}>Back</Button>
     </>
   );
 };
