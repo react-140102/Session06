@@ -1,6 +1,8 @@
 import { Table, Pagination } from "antd";
 import type { ColumnsType } from "antd/lib/table";
+import { Helmet } from "react-helmet-async";
 import { useFetchData } from "../hooks/useFetchData";
+import { Header } from "./Header";
 
 interface Post {
   id: number;
@@ -42,6 +44,7 @@ export const Posts = () => {
 
   return (
     <>
+      <Header title="پست"></Header>
       <Table
         loading={loading}
         columns={columns}

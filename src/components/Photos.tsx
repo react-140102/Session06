@@ -2,6 +2,7 @@ import { Table, Pagination, Image } from "antd";
 import type { ColumnsType } from "antd/lib/table";
 import { Link } from "react-router-dom";
 import { useFetchData } from "../hooks/useFetchData";
+import { Header } from "./Header";
 import { Photo } from "./Photo";
 
 function genColumn(name: string) {
@@ -33,10 +34,11 @@ export const Photos = () => {
 
   return (
     <>
+      <Header title="Photos"></Header>
       <Table
         loading={loading}
         columns={columns}
-        dataSource={data}        
+        dataSource={data}
         pagination={false}
         rowKey="id"
       />
