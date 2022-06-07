@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { Task } from "./Task";
 import TaskItem from "./TaskItem";
-import "./TaskList.css";
+import styles from "./TaskList.module.css";
 
 //Before Hooks
 //Class
@@ -56,7 +56,7 @@ export default function TodoList() {
 
   return (
     <>
-      <h1>New Task:</h1>
+      <h1 className={styles.header}>New Task:</h1>
       <input onChange={(e) => setTitle(e.target.value)} value={title} />
       <button onClick={addTask}>Add</button>
       <ul>
