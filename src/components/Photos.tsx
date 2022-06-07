@@ -34,6 +34,7 @@ export const Photos = () => {
 
   return (
     <>
+      <h1>Photos</h1>
       <Header title="Photos"></Header>
       <Table
         loading={loading}
