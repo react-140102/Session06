@@ -5,8 +5,8 @@ import { Posts } from "./Posts";
 import { Todos } from "./Todos";
 import TaskList from "./Task/TaskList";
 import { SelectColor } from "./SelectColor";
-import { Link, Route, Routes } from "react-router-dom";
-
+import { Link, Route, Routes, Navigate } from "react-router-dom";
+import {NotFound} from './NotFound';
 
 // import { Photos } from "./Photos";
 // import { PhotoDetail } from "./PhotoDetail";
@@ -56,6 +56,8 @@ export const AppLayout = () => (
           <Route path="todos" element={<Todos />} />
           <Route path="photos" element={<Suspense fallback={<div>loading ...</div>}><Photos /></Suspense>  } />
           <Route path="photos/:id" element={<Suspense fallback={<div>loading ...</div>}><PhotoDetail /></Suspense>} />
+          <Route path="404" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/404" replace={true} />}/>
         </Routes>
       </div>
     </Content>
