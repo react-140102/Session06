@@ -43,7 +43,7 @@ export const Photos = () => {
       <Table
         loading={loading}
         columns={columns}
-        dataSource={data}
+        dataSource={data.map(x => ({...x, key: x.id}))}        
         pagination={false}
       />
       <Pagination
