@@ -6,6 +6,7 @@ import TaskList from "./Task/TaskList";
 import { SelectColor } from "./SelectColor";
 import { Link, Route, Routes } from "react-router-dom";
 import { Photos } from "./Photos";
+import { PhotoDetail } from "./PhotoDetail";
 
 const { Header, Content, Footer } = Layout;
 
@@ -48,6 +49,7 @@ export const AppLayout = () => (
           <Route path="comments" element={<Comments />} />
           <Route path="todos" element={<Todos />} />
           <Route path="photos" element={<Photos />} />
+          <Route path="photos/:id" element={<PhotoDetail />} />
         </Routes>
       </div>
     </Content>

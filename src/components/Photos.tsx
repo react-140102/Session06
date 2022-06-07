@@ -2,14 +2,7 @@ import { Table, Pagination, Image } from "antd";
 import type { ColumnsType } from "antd/lib/table";
 import { Link } from "react-router-dom";
 import { useFetchData } from "../hooks/useFetchData";
-
-interface Photo {
-  id: number;
-  title: string;
-  url: string;
-  thumbnailUrl: string;
-  img: string; //base64
-}
+import { Photo } from "./Photo";
 
 function genColumn(name: string) {
   return {
