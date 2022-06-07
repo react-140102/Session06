@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-// ...
+import counterReducer from './components/Counter/couter.slice' ;
 
 export const store = configureStore({
   reducer: {
+    shomarande: counterReducer
   },
 })
 
