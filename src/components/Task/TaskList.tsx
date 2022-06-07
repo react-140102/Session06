@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import { Task } from "./Task";
 import TaskItem from "./TaskItem";
 import styles from "./TaskList.module.css";
+import styled from "styled-components";
 
 //Before Hooks
 //Class
@@ -17,6 +18,16 @@ const b = () => console.log("salam");
 if (a === b) {
   //
 }
+
+const Input = styled.input`
+  font-size: 1.5em;
+  text-align: center;
+  border-color: palevioletred;
+  border-radius: 10%;
+`;
+
+const msg = "donya";
+const str = `salam ${msg}`; //back tick, string interpolation, string template
 
 export default function TodoList() {
   const [title, setTitle] = useState("");
@@ -57,7 +68,7 @@ export default function TodoList() {
   return (
     <>
       <h1 className={styles.header}>New Task:</h1>
-      <input onChange={(e) => setTitle(e.target.value)} value={title} />
+      <Input onChange={(e) => setTitle(e.target.value)} value={title} />
       <button onClick={addTask}>Add</button>
       <ul>
         {tasks.map((task) => (
