@@ -4,8 +4,11 @@ import { Helmet } from "react-helmet-async";
 import { useDispatch, useSelector } from "react-redux";
 import { useFetchData } from "../hooks/useFetchData";
 import { Header } from "./Header";
-import { reset, incrementByAmount } from "./Counter/couter.slice";
-import { RootState } from "../store";
+import {
+  reset,
+  incrementByAmount,
+  counterSelector,
+} from "./Counter/couter.slice";
 
 interface Post {
   id: number;
@@ -40,7 +43,7 @@ const columns: ColumnsType<Post> = [
 //custom hook
 export const Posts = () => {
   const dispatch = useDispatch();
-  const count = useSelector((state: RootState) => state.shomarande.value);
+  const count = useSelector(counterSelector);
 
   //refactoring
   // بهینه کردن ساختار کد بدون تغییر در رفتار کرد

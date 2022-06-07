@@ -1,12 +1,16 @@
 import { Badge, Button, Divider } from "antd";
 
-import { increment, decrement } from "./couter.slice";
+import { increment, decrement, reset, counterSelector } from "./couter.slice";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { useEffect } from "react";
 
 const Counter = () => {
   const dispatch = useDispatch();
-  const count = useSelector((state: RootState) => state.shomarande.value);
+  const count = useSelector(counterSelector);
+  // useEffect(() => {
+  //   dispatch(reset());
+  // }, [dispatch]);
+
   return (
     <>
       <Divider></Divider>
