@@ -1,20 +1,16 @@
 import { Table, Pagination, Button, Badge } from "antd";
 import type { ColumnsType } from "antd/lib/table";
-import { useDispatch, useSelector } from "react-redux";
-import { useFetchData } from "hooks/useFetchData";
+import { useSelector } from "react-redux";
 import { Header } from "components/Header";
 import {
   reset,
   incrementByAmount,
   counterSelector,
 } from "components/Counter/couter.slice";
-
-interface Post {
-  id: number;
-  userId: number;
-  title: string;
-  body: string;
-}
+import { Post } from "./Post";
+import { fetchPosts, postSelector, setPage, setPageSize } from "./posts.slice";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "hooks/redux";
 
 function genColumn(name: string) {
   return {
@@ -39,39 +35,38 @@ const columns: ColumnsType<Post> = [
     ...genColumn("body"),
   },
 ];
-//custom hook
 export const Posts = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const count = useSelector(counterSelector);
+  const posts = useAppSelector(postSelector);
 
-  //refactoring
-  // بهینه کردن ساختار کد بدون تغییر در رفتار کرد
-
-  const { loading, data, page, setPage, setPageSize, total } =
-    useFetchData<Post>("posts");
+  useEffect(() => {
+    dispatch(fetchPosts({ page: 1, pageSize: 10 }));
+  }, []);
 
   return (
     <>
-      <Header title="پست"></Header>
+      <Header title="POSTS TEST"></Header>
 
       <Button onClick={() => dispatch(incrementByAmount(10))}>Add 10</Button>
       <Badge count={count}>
         <Button onClick={() => dispatch(reset())}>Rest</Button>
       </Badge>
       <Table
-        loading={loading}
+        loading={posts.loading}
         columns={columns}
-        dataSource={data}
+        dataSource={posts.data}
         pagination={false}
         rowKey="id"
       />
       <Pagination
-        defaultCurrent={page}
+        defaultCurrent={posts.page}
         onChange={(page, pageSize) => {
-          setPage(page);
-          setPageSize(pageSize);
+          dispatch(fetchPosts({ page, pageSize }));
+          // dispatch(setPage(page));
+          // dispatch(setPageSize(pageSize));
         }}
-        total={total}
+        total={posts.total}
       ></Pagination>
     </>
   );
