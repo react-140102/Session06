@@ -7,6 +7,7 @@ import TaskList from "./Task/TaskList";
 import { SelectColor } from "./SelectColor";
 import { Link, Route, Routes, Navigate } from "react-router-dom";
 import { NotFound } from "./NotFound";
+import Login from "features/auth/Login";
 
 // import { Photos } from "./Photos";
 // import { PhotoDetail } from "./PhotoDetail";
@@ -59,6 +60,7 @@ export const AppLayout = () => (
             }
           />
           <Route path="posts" element={<Posts />} />
+          <Route path="login" element={<Login />} />
           <Route path="tasks" element={<TaskList />} />
           <Route path="comments" element={<Comments />} />
           <Route path="todos" element={<Todos />} />

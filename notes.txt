@@ -6,3 +6,14 @@ react dom
   https://github.com/remix-run/react-router/blob/main/docs/getting-started/tutorial.md
 
   npm install react-router-dom@6
+
+Authenticate
+  -> Check User Valid
+  ->  Form login,
+      3rd party, SAML, OAuth
+  -> cookie (session id)
+  -> (RESTFull) -> token
+    -> token JWT.io
+    -> header token
+Authorization
+  -> RBAC - role based access control

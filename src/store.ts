@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./components/Counter/couter.slice";
 import taskReducer from "./components/Task/task.slice";
 import postReducer from "features/posts/posts.slice";
+import authReducer from "features/auth/auth.slice";
 
 export const store = configureStore({
   reducer: {
     shomarande: counterReducer,
     task: taskReducer,
     post: postReducer,
+    auth: authReducer,
   },
 });
 
