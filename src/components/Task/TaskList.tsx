@@ -1,23 +1,9 @@
-import { useState, useCallback } from "react";
-import { Task } from "./Task";
+import { useState } from "react";
 import TaskItem from "./TaskItem";
 import styles from "./TaskList.module.css";
 import styled from "styled-components";
-
-//Before Hooks
-//Class
-//Dumb Component
-
-//React Hook
-//1. react componetns
-//2. level asli component
-//3. exception: custome hooks
-
-const a = () => console.log("salam");
-const b = () => console.log("salam");
-if (a === b) {
-  //
-}
+import { addTask, taskSelector } from "./task.slice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Input = styled.input`
   font-size: 1.5em;
@@ -26,57 +12,25 @@ const Input = styled.input`
   border-radius: 10%;
 `;
 
-const msg = "donya";
-const str = `salam ${msg}`; //back tick, string interpolation, string template
-
 export default function TodoList() {
   const [title, setTitle] = useState("");
-  const [tasks, setTasks] = useState<Task[]>([
-    { id: 1, title: "React hooks", done: true },
-    { id: 2, title: "Ajax", done: false },
-  ]); // <Type> generics
 
-  const toggleTask = useCallback(
-    (task: Task) => {
-      task.done = !task.done;
-      setTasks([...tasks]);
-      // setTasks(tasks.slice());
-    },
-    [tasks]
-  );
+  const task = useSelector(taskSelector);
+  const dispatch = useDispatch();
 
-  const addTask = () => {
-    let newtasks = [...tasks];
-    newtasks.push({
-      id: Math.random(),
-      title,
-      done: false,
-    });
-    setTasks(newtasks);
+  const add = () => {
+    dispatch(addTask(title));
     setTitle("");
-
-    //Batch
-
-    // tasks.push({
-    //   id: Math.random(),
-    //   title,
-    //   done: false,
-    // });
-    // setTasks(tasks);
   };
 
   return (
     <>
       <h1 className={styles.header}>New Task:</h1>
       <Input onChange={(e) => setTitle(e.target.value)} value={title} />
-      <button onClick={addTask}>Add</button>
+      <button onClick={add}>Add</button>
       <ul>
-        {tasks.map((task) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            toggleTask={toggleTask}
-          ></TaskItem>
+        {task.tasks.map((task) => (
+          <TaskItem key={task.id} task={task}></TaskItem>
         ))}
       </ul>
     </>

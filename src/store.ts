@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './components/Counter/couter.slice' ;
+import taskReducer from './components/Task/task.slice' ;
 
 export const store = configureStore({
   reducer: {
-    shomarande: counterReducer
+    shomarande: counterReducer,
+    task: taskReducer,
   },
 })
 
