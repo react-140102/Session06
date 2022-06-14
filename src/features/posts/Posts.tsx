@@ -1,14 +1,13 @@
 import { Table, Pagination, Button, Badge } from "antd";
 import type { ColumnsType } from "antd/lib/table";
-import { Helmet } from "react-helmet-async";
 import { useDispatch, useSelector } from "react-redux";
-import { useFetchData } from "../../hooks/useFetchData";
-import { Header } from "../../components/Header";
+import { useFetchData } from "hooks/useFetchData";
+import { Header } from "components/Header";
 import {
   reset,
   incrementByAmount,
   counterSelector,
-} from "../../components/Counter/couter.slice";
+} from "components/Counter/couter.slice";
 
 interface Post {
   id: number;
