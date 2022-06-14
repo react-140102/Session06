@@ -1,7 +1,7 @@
 import { Layout, Menu, Divider } from "antd";
 import { lazy, Suspense } from "react";
 import { Comments } from "./Comments";
-import { Posts } from "./Posts";
+import { Posts } from "../features/posts/Posts";
 import { Todos } from "./Todos";
 import TaskList from "./Task/TaskList";
 import { SelectColor } from "./SelectColor";
