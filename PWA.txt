@@ -1,0 +1,16 @@
+PWA - Progressive Web Application
+  1. support offline - service worker
+  2. https
+  3. manifest
+
+
+https://create-react-app.dev/docs/making-a-progressive-web-app/
+npx create-react-app my-app --template cra-template-pwa-typescript
+
+
+  https://dev.to/myfatemi04/turn-your-create-react-app-into-a-progressive-web-app-in-100-seconds-3c11
+
+
+https://www.pwastats.com/
+https://whatpwacando.today/
+https://whatwebcando.today/
