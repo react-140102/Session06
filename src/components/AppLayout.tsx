@@ -1,7 +1,9 @@
-import { Layout, Menu } from "antd";
+import { Button, Layout, Menu } from "antd";
 import { lazy } from "react";
 import { SelectColor } from "./SelectColor";
 import { Link, Outlet } from "react-router-dom";
+import { useAppDispatch } from "hooks/redux";
+import { logout } from "features/auth/auth.slice";
 
 // import { Photos } from "./Photos";
 // import { PhotoDetail } from "./PhotoDetail";
@@ -17,6 +19,8 @@ const Counter = lazy(() => import("./Counter/Couter"));
 const { Header, Content, Footer } = Layout;
 
 export const AppLayout = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <Layout className="layout">
       <Header>
@@ -39,6 +43,9 @@ export const AppLayout = () => {
           </Menu.Item>
           <Menu.Item key="counter">
             <Link to="/counter">Counter</Link>
+          </Menu.Item>
+          <Menu.Item key="logout">
+            <Button onClick={() => dispatch(logout())}>logout</Button>
           </Menu.Item>
         </Menu>
       </Header>
