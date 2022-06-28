@@ -1,9 +1,7 @@
 import { Layout, Menu } from "antd";
 import { lazy } from "react";
 import { SelectColor } from "./SelectColor";
-import { Link, Navigate, Outlet } from "react-router-dom";
-import { useAppSelector } from "hooks/redux";
-import { authSelector } from "features/auth/auth.slice";
+import { Link, Outlet } from "react-router-dom";
 
 // import { Photos } from "./Photos";
 // import { PhotoDetail } from "./PhotoDetail";
@@ -19,31 +17,27 @@ const Counter = lazy(() => import("./Counter/Couter"));
 const { Header, Content, Footer } = Layout;
 
 export const AppLayout = () => {
-  const auth = useAppSelector(authSelector);
-  if (!auth.token) {
-    return <Navigate to="/login"></Navigate>;
-  }
   return (
     <Layout className="layout">
       <Header>
         <div className="logo" />
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
-          <Menu.Item>
+          <Menu.Item key="post">
             <Link to="/posts">Posts</Link>
           </Menu.Item>
-          <Menu.Item>
+          <Menu.Item key="comments">
             <Link to="/comments">Comments</Link>
           </Menu.Item>
-          <Menu.Item>
+          <Menu.Item key="tasks">
             <Link to="/tasks">Tasks</Link>
           </Menu.Item>
-          <Menu.Item>
+          <Menu.Item key="todos">
             <Link to="/todos">Todos</Link>
           </Menu.Item>
-          <Menu.Item>
+          <Menu.Item key="photos">
             <Link to="/photos">Photos</Link>
           </Menu.Item>
-          <Menu.Item>
+          <Menu.Item key="counter">
             <Link to="/counter">Counter</Link>
           </Menu.Item>
         </Menu>

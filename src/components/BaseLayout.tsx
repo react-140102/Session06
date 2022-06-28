@@ -5,6 +5,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { AppLayout } from "./AppLayout";
 import { Comments } from "./Comments";
 import { NotFound } from "./NotFound";
+import ProtectedRoute from "./ProtectedRoute";
 import TaskList from "./Task/TaskList";
 import { Todos } from "./Todos";
 
@@ -28,8 +29,22 @@ export default function BaseLayout() {
             </>
           }
         />
-        <Route path="posts" element={<Posts />} />
-        <Route path="tasks" element={<TaskList />} />
+        <Route
+          path="posts"
+          element={
+            <ProtectedRoute role="admin">
+              <Posts />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="tasks"
+          element={
+            <ProtectedRoute>
+              <TaskList />
+            </ProtectedRoute>
+          }
+        />
         <Route path="comments" element={<Comments />} />
         <Route path="todos" element={<Todos />} />
         <Route
