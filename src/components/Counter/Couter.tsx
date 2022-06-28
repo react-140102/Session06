@@ -1,8 +1,7 @@
 import { Badge, Button, Divider } from "antd";
 
-import { increment, decrement, reset, counterSelector } from "./couter.slice";
+import { increment, decrement, counterSelector } from "./couter.slice";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 
 const Counter = () => {
   const dispatch = useDispatch();

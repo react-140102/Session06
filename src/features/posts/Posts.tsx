@@ -8,7 +8,7 @@ import {
   counterSelector,
 } from "components/Counter/couter.slice";
 import { Post } from "./Post";
-import { fetchPosts, postSelector, setPage, setPageSize } from "./posts.slice";
+import { fetchPosts, postSelector } from "./posts.slice";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 
@@ -42,7 +42,7 @@ export const Posts = () => {
 
   useEffect(() => {
     dispatch(fetchPosts({ page: 1, pageSize: 10 }));
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

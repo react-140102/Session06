@@ -1,7 +1,6 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
-import { useEffect } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { login, authSelector } from "./auth.slice";
 
 export default function Login() {

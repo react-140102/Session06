@@ -1,5 +1,4 @@
 import "./App.css";
-import { AppLayout } from "./components/AppLayout";
 import { createContext, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";

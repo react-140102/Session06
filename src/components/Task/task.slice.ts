@@ -1,18 +1,15 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from '../../store'
-import { Task } from './Task';
-
-
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../../store";
 
 const initialState = {
-  tasks : [
+  tasks: [
     { id: 1, title: "React hooks", done: true },
     { id: 2, title: "Ajax", done: false },
-  ]
-}
+  ],
+};
 
 const taskSlice = createSlice({
-  name: 'task',
+  name: "task",
   initialState,
   reducers: {
     addTask: (state, action: PayloadAction<string>) => {
@@ -20,28 +17,28 @@ const taskSlice = createSlice({
       state.tasks.push({
         id: Math.random(),
         title: action.payload,
-        done: false
-      })
+        done: false,
+      });
     },
     toggleTask: (state, action: PayloadAction<number>) => {
-      const task = state.tasks.find(x =>x.id === action.payload);
-      if(task){
+      const task = state.tasks.find((x) => x.id === action.payload);
+      if (task) {
         task.done = !task?.done;
       }
     },
     removeTask: (state, action: PayloadAction<number>) => {
-      state.tasks = state.tasks.filter(x =>x.id !== action.payload);      
+      state.tasks = state.tasks.filter((x) => x.id !== action.payload);
     },
-    editTask: (state, action: PayloadAction<{id: number, title: string}>) => {
-      const task = state.tasks.find(x =>x.id === action.payload.id);
-      if(task){
+    editTask: (state, action: PayloadAction<{ id: number; title: string }>) => {
+      const task = state.tasks.find((x) => x.id === action.payload.id);
+      if (task) {
         task.title = action.payload.title;
-      }     
+      }
     },
-  }
+  },
 });
 
-export const {addTask, toggleTask, removeTask, editTask} =  taskSlice.actions;
+export const { addTask, toggleTask, removeTask, editTask } = taskSlice.actions;
 
 export default taskSlice.reducer;
 

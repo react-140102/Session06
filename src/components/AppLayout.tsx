@@ -1,20 +1,8 @@
 import { Button, Layout, Menu } from "antd";
-import { lazy } from "react";
 import { SelectColor } from "./SelectColor";
 import { Link, Outlet } from "react-router-dom";
 import { useAppDispatch } from "hooks/redux";
 import { logout } from "features/auth/auth.slice";
-
-// import { Photos } from "./Photos";
-// import { PhotoDetail } from "./PhotoDetail";
-
-const Photos = lazy(() =>
-  import("./Photos").then(({ Photos }) => ({ default: Photos }))
-);
-const PhotoDetail = lazy(() =>
-  import("./PhotoDetail").then(({ PhotoDetail }) => ({ default: PhotoDetail }))
-);
-const Counter = lazy(() => import("./Counter/Couter"));
 
 const { Header, Content, Footer } = Layout;
 
