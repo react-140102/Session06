@@ -10,12 +10,13 @@ interface AuthState {
 
 const initialState: AuthState = {
   loading: false,
-  token: "", //<---
+  token: localStorage.getItem("token") || "", // default operator
   email: "",
 };
 
 export const login = createAsyncThunk("auth/login", async (loginData: any) => {
   const resp = await api.post<{ token: string }>(`auth/login`, loginData);
+  localStorage.setItem("token", resp.data.token);
   return {
     data: resp.data,
     email: loginData.email,
