@@ -1,0 +1,16 @@
+Rendering
+  1. SSR - Server Side Rendering
+    asp, java, php
+  2. CSR - Client Side Rendering
+    index.html/app.js
+
+  SSR (node) -> CSR
+  SSG
+  
+------------------
+  SEO
+------------------
+
+SSR 
+  NextJS
+  RemixJs
