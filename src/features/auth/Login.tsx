@@ -1,8 +1,12 @@
 import { Button, Checkbox, Form, Input } from "antd";
-import { useAppDispatch } from "hooks/redux";
-import { login } from "./auth.slice";
+import { useAppDispatch, useAppSelector } from "hooks/redux";
+import { useEffect } from "react";
+import { Link, Navigate } from "react-router-dom";
+import { login, authSelector } from "./auth.slice";
 
 export default function Login() {
+  const auth = useAppSelector(authSelector);
+
   const dispatch = useAppDispatch();
   const onFinish = (values: any) => {
     console.log("Success:", values);
@@ -12,6 +16,10 @@ export default function Login() {
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
+
+  if (auth.token) {
+    return <Navigate to="/"></Navigate>;
+  }
 
   return (
     <Form

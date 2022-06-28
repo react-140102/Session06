@@ -45,4 +45,4 @@ export default authSlice.reducer;
 
 // export const {  } = authSlice.actions;
 
-export const authSelector = (state: RootState) => state.post;
+export const authSelector = (state: RootState) => state.auth;
