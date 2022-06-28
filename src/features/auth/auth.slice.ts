@@ -6,6 +6,7 @@ interface AuthState {
   loading: boolean;
   token: string;
   email: string;
+  error?: string;
 }
 
 const initialState: AuthState = {
@@ -44,6 +45,7 @@ const authSlice = createSlice({
     });
     builder.addCase(login.rejected, (state, action) => {
       state.loading = false;
+      state.error = "";
     });
   },
 });

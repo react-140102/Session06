@@ -12,8 +12,12 @@ export const PhotoDetail = () => {
 
   useEffect(() => {
     (async () => {
-      const resp = await api.get<Photo[]>(`photos?id=` + params.id);      
-      setPhoto(resp.data[0]);
+      try {
+        const resp = await api.get<Photo[]>(`photos?id=` + params.id);
+        setPhoto(resp.data[0]);
+      } catch (e) {
+        console.log(e);
+      }
     })();
   }, [params]);
 
@@ -23,12 +27,7 @@ export const PhotoDetail = () => {
         hoverable
         style={{ width: 240 }}
         title={photo?.title}
-        cover={
-          <img
-            alt="example"
-            src={photo?.url}
-          />
-        }
+        cover={<img alt="example" src={photo?.url} />}
       >
         <Meta title={photo?.title} description="www.instagram.com" />
       </Card>
